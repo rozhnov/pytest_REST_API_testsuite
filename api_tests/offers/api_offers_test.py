@@ -14,8 +14,9 @@ def setup_module():
     print('----------------------------------------------------------------------')
     print('setup module ' + __name__)
     sender = Sender()
-    request = sender.get("/api/rest/webmaster/json/profile?")
+    request = sender.get("/api/rest/webmaster/json/offers/web?limit=1&")
     jsondump = request.json()
+    print('response: ')
     pp.pprint(jsondump)
     code = request.status_code
     curdir = os.path.dirname(__file__)
@@ -31,6 +32,7 @@ def test_profile_json_status():
 
 def test_profile_json_schema():
     validate(jsondump, schema)
+    pass
 
 
 def test_profile_json_status_500():

@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+	"status": {
+	  "type": "integer"
+	},
+	"error": {
+	  "type": "string"
+	},
+	"data": {
+	  "type": "object",
+	  "properties": {
+		"items": {
+		  "type": "object",
+		  "patternProperties":{
+			"^(\\d+)" : {
+			  "type": "object",
+			  "required":["name","user_has_offer","cookie_ltv","shop_id","cpl","epc7days","epc90days","cpo7days","cpo30days"],
+			  "properties":{
+				"name": {
+				  "type": "string"
+				},
+				"user_has_offer": {
+				  "enum": ["0", "1"]
+				},
+				"cookie_ltv":{
+				  "type": "string"
+				},
+				"favicon" :{
+				  "type": "string"
+				},
+				"shop_id" :{
+				  "type": "string"
+				},
+				"epc7days" :{
+				  "type": "number"
+				},
+				"epc90days" :{
+				  "type": "number"
+				},
+				"cpo7days" :{
+				  "type": "number"
+				},
+				"cpo30days" :{
+				  "type": "number"
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	},
+	"request_id": {
+	  "type": "integer"
+	}
+  },
+  "required": ["status", "error", "data", "request_id"]
+}
