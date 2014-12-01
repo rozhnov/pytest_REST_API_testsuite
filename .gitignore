@@ -2,3 +2,5 @@ __pycache__/
 .svn/
 .git/
 .idea/
+nosetests.html
+nosetests.xml

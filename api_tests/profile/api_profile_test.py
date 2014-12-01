@@ -33,6 +33,11 @@ def profile_json_schema_test():
     validate(jsondump, schema)
 
 
+def profile_json_status_500_test():
+    status = jsondump['status']
+    assert status != 500 , "assert status in json  not 500"
+
+
 def teardown():
     print('teardown module ' + __name__)
     print('----------------------------------------------------------------------')
