@@ -11,24 +11,40 @@ class BasePage(object):
 
 class FrontPage(BasePage):
     def login(self):
-        loginlink = self.driver.find_element(*MainPageLocators.LOGIN_LINK)
-        loginlink.click()
-        loginpopup = self.driver.find_element(*MainPageLocators.LOGIN_POPUP)
-        name = self.driver.find_element(*MainPageLocators.NICK)
-        name.send_keys("me0i@mail.ru")
-        pwd = self.driver.find_element(*MainPageLocators.PWD)
-        pwd.send_keys("123698745")
-        submit = self.driver.find_element(*MainPageLocators.SUBMIT)
-        submit.click()
-        myname = self.driver.find_element(*MainPageLocators.MYNAME)
-        return myname.text
+        self.loginlink.click()
+        self.name.send_keys("me0i@mail.ru")
+        self.pwd.send_keys("123698745")
+        self.submit.click()
+        return self.myname.text
 
     def openmainpage(self):
         self.driver.get(self.baseurl)
 
     @property
-    def getusername(self):
+    def username(self):
         name = self.driver.find_element(*MainPageLocators.MYNAME)
         return name
 
+    @property
+    def loginlink(self):
+        return self.driver.find_element(*MainPageLocators.LOGIN_LINK)
 
+    @property
+    def loginpopup(self):
+        return self.driver.find_element(*MainPageLocators.LOGIN_POPUP)
+
+    @property
+    def name(self):
+        return self.driver.find_element(*MainPageLocators.NICK)
+
+    @property
+    def pwd(self):
+        return self.driver.find_element(*MainPageLocators.PWD)
+
+    @property
+    def submit(self):
+        return self.driver.find_element(*MainPageLocators.SUBMIT)
+
+    @property
+    def myname(self):
+        return self.driver.find_element(*MainPageLocators.MYNAME)
