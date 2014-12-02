@@ -1,5 +1,7 @@
 import time
 import sys
+from setup import helper
+from setup import config
 from selenium.webdriver import DesiredCapabilities
 from selenium import webdriver
 from pages import frontpage
@@ -8,23 +10,25 @@ from pages import frontpage
 def setup_module():
     global driver
     global user
+    global hub
+    hub = config.hub
     driver = webdriver.Remote(
-        command_executor='http://10.8.15.52:4444/wd/hub',
+        command_executor=hub,
         desired_capabilities=DesiredCapabilities.FIREFOX)
-    user = 'me0i@mail.ru'
+    user = config.wm
+
+
+def teardown_function(function):
+    helper.screenshot(function, driver)
 
 
 def teardown_module():
-    date = time.strftime("%Y-%m-%d-%H-%M")
-    driver.get_screenshot_as_file('screenshots/' + testname + ' ' + str(date) + '.png')
     driver.quit()
 
 
 def test_login():
-    global testname
-    testname = sys._getframe().f_code.co_name
     page = frontpage.FrontPage(driver)
-    driver.get('http://cityads.com')
+    page.openmainpage()
     myname = page.login()
     assert (myname == user)
 

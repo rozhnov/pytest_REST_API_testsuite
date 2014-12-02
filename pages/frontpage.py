@@ -1,16 +1,16 @@
 __author__ = 's.lugovskiy'
 from pages.locators import MainPageLocators
-
+from setup import config
 
 
 class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
+        self.baseurl = config.baseUrl
 
 
 class FrontPage(BasePage):
     def login(self):
-
         loginlink = self.driver.find_element(*MainPageLocators.LOGIN_LINK)
         loginlink.click()
         loginpopup = self.driver.find_element(*MainPageLocators.LOGIN_POPUP)
@@ -23,7 +23,10 @@ class FrontPage(BasePage):
         myname = self.driver.find_element(*MainPageLocators.MYNAME)
         return myname.text
 
+    def openmainpage(self):
+        self.driver.get(self.baseurl)
 
+    @property
     def getusername(self):
         name = self.driver.find_element(*MainPageLocators.MYNAME)
         return name
