@@ -1,5 +1,6 @@
 __pycache__/
 .svn/
+setup/screenshots/
 .git/
 .idea/
 nosetests.html
