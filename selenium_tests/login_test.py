@@ -5,6 +5,7 @@ from setup import config
 from selenium.webdriver import DesiredCapabilities
 from selenium import webdriver
 from pages import frontpage
+# -*- coding: utf-8 -*-
 
 
 def setup_module():

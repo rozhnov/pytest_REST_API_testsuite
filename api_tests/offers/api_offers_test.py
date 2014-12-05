@@ -1,8 +1,8 @@
-from sender.request_sender import Sender
 import json
 import os
 import pprint
 from jsonschema import validate
+from sender.request_sender import Sender
 
 
 def setup_module():
@@ -36,12 +36,12 @@ def test_offers_json_schema():
 
 def test_offers_json_status_500():
     status = jsondump['status']
-    assert status != 500 , "assert status in json  not 500"
+    assert status != 500, "assert status in json  not 500"
 
 
 def test_offers_geo():
     items = jsondump['data']['items']
-    for key , value in items.items():
+    for key, value in items.items():
         geo = jsondump['data']['items'][key]['geo']
         for item in geo:
             ccode = item['code']
@@ -49,7 +49,6 @@ def test_offers_geo():
             assert ccode is not None
             assert ccode is not 'null'
             assert len(ccode) > 0
-
 
 
 def teardown_module():

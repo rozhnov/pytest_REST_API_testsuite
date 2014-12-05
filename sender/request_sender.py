@@ -1,18 +1,37 @@
 __author__ = 's.lugovskiy'
 import requests
 from setup import config
+from testrail import testrail
+import json
 
 
 class Sender:
 
     def __init__(self):
         self.url = config.apiurl
+        self.rail_api = config.testrail_post_api
         self.key = config.key
-        self.token = '&remote_auth=' + self.key
+        self.token = 'remote_auth=' + self.key
+        self.testrail_run_id = config.testrail_runid
 
     def get(self, method):
         fullurl = self.url + method + self.token
-        print('send GET ' + fullurl)
+        print('\nGET ' + fullurl)
         request = requests.get(self.url + method + self.token, verify=False)
         return request
+
+    def post(self, method, params=None):
+        fullurl = self.url + method + self.token
+        print('\nPOST ' + fullurl)
+        print('\nparams: ' + json.dumps(params))
+        request = requests.post(self.url + method + self.token, data=json.dumps(params), verify=False)
+        return request
+
+    def post_testrail(self, testid, status, comment='ok'):
+        client = testrail.APIClient(self.rail_api)
+        client.user = 'autotest@team.sagl'
+        client.password = '123456'
+        url = 'add_result_for_case/' + str(self.testrail_run_id) + '/' + str(testid)
+        res = {'status_id': status, 'comment': str(comment)}
+        result = client.send_post(url, res)
 

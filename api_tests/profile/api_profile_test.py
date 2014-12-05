@@ -1,8 +1,8 @@
-from sender.request_sender import Sender
 import json
 import os
 import pprint
 from jsonschema import validate
+from sender.request_sender import Sender
 
 
 def setup_module():
