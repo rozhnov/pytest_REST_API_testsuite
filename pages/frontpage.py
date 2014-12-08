@@ -1,5 +1,6 @@
+from selenium.webdriver.common.by import By
+
 __author__ = 's.lugovskiy'
-from pages.locators import MainPageLocators
 from setup import config
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -25,7 +26,7 @@ class FrontPage():
 
         :rtype: WebElement
         """
-        name = self.driver.find_element(*MainPageLocators.MYNAME)
+        name = self.driver.find_element(By.XPATH, "//a[@class='with-hover-underline col-blacky']")
         return name
 
     @property
@@ -34,7 +35,7 @@ class FrontPage():
 
         :rtype: WebElement
         """
-        return self.driver.find_element(*MainPageLocators.LOGIN_LINK)
+        return self.driver.find_element(By.XPATH, '//a[@id="popup-login-link"]')
 
     @property
     def loginpopup(self):
@@ -42,7 +43,7 @@ class FrontPage():
 
         :rtype: WebElement
         """
-        return self.driver.find_element(*MainPageLocators.LOGIN_POPUP)
+        return self.driver.find_element(By.XPATH, "//div[contains(@class,'popup popup-logi')]")
 
     @property
     def name(self):
@@ -50,7 +51,7 @@ class FrontPage():
 
         :rtype: WebElement
         """
-        return self.driver.find_element(*MainPageLocators.NICK)
+        return self.driver.find_element(By.XPATH, '//input[@name="nick"]')
 
     @property
     def pwd(self):
@@ -58,7 +59,7 @@ class FrontPage():
 
         :rtype: WebElement
         """
-        return self.driver.find_element(*MainPageLocators.PWD)
+        return self.driver.find_element(By.XPATH, '//input[@name="passwd"]')
 
     @property
     def submit(self):
@@ -66,7 +67,7 @@ class FrontPage():
 
         :rtype: WebElement
         """
-        return self.driver.find_element(*MainPageLocators.SUBMIT)
+        return self.driver.find_element(By.XPATH, '//span[@class="submit"]')
 
     @property
     def myname(self):
@@ -74,4 +75,4 @@ class FrontPage():
 
         :rtype: WebElement
         """
-        return self.driver.find_element(*MainPageLocators.MYNAME)
+        return self.driver.find_element(By.XPATH, "//a[@class='with-hover-underline col-blacky']")
