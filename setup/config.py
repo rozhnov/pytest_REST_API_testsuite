@@ -16,7 +16,10 @@ testrail_runid = 6
 
 config = {}
 for key in ['apiurl', 'baseUrl', 'wm', 'wmPw', 'key', 'hub', 'multiselectpage', 'testrail_post_api', 'testrail_runid']:
-    config[key] = os.environ[key]
+    try:
+        config[key] = os.environ[key]
+    except Exception as e:
+        pass
 
 if config['apiurl']:
     apiurl = config['apiurl']

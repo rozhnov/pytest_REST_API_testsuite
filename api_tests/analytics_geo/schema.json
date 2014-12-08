@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+	"status": {
+	  "type": "integer"
+	},
+	"request_id": {
+	  "type": "integer"
+	},
+	"error": {
+	  "type": "string"
+	},
+	"data": {
+	  "type": "object",
+	  "properties": {
+		"countries": {
+		  "type": "array",
+		  "minItems": 10,
+		  "uniqueItems": true,
+		  "items":{
+			"type": "object",
+			"propertirs":{
+			  "country":{
+				"type": "string"
+			  },
+			  "share":{
+				"type": "integer"
+			  }
+			}
+		  }
+		}
+	  }
+	}
+  },
+    "required": ["status", "error", "data", "request_id"]
+}

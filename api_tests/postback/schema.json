@@ -1,0 +1,58 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+	"status": {
+	  "type": "integer"
+	},
+	"error": {
+	  "type": "string"
+	},
+	"data": {
+	  "type": "object",
+	  "properties":{
+		"id":{
+		  "type": "string"
+		},
+		"name":{
+		  "type": "string"
+		},
+		"url":{
+		  "type": "string"
+		},
+		"action_type":{
+		  "type": "string"
+		},
+		"request_type":{
+		  "type": "string"
+		},
+		"status": {
+		  "type": "string"
+		},
+		"comment":{
+		  "type": "string"
+		},
+		"query_params":{
+		  "type": [ "string", "null" ]
+		},
+		"offers_included":{
+		  "type": [ "string", "null" ]
+		}
+	  },
+	  "required":[
+		"query_params","offers_included"
+	  ]
+	}
+  },
+  "required":[
+		"status","error","data"
+	  ]
+}
+
+
+
+
+
+
+
+
