@@ -21,49 +21,49 @@ for key in ['apiurl', 'baseUrl', 'wm', 'wmPw', 'key', 'hub', 'multiselectpage', 
     except Exception as e:
         pass
 
-if config['apiurl']:
+try:
     apiurl = config['apiurl']
-else:
+except KeyError as e:
     apiurl = 'http://cityads.com'
 
-if config['baseUrl']:
+try:
     baseUrl = config['baseUrl']
-else:
+except KeyError as e:
     baseUrl = 'http://cityads.com'
 
-if config['wm']:
+try:
     wm = config['wm']
-else:
+except KeyError as e:
     wm = 'me0i@mail.ru'
 
-if config['wmPw']:
+try:
     wmPw = config['wmPw']
-else:
+except KeyError as e:
     wmPw = '123698745'
 
-if config['key']:
+try:
     key = config['key']
-else:
+except KeyError as e:
     key = '859da89ead6c6ae40bb4d8e51bae4771'
 
-if config['hub']:
+try:
     hub = config['hub']
-else:
-    hub = 'http://10.8.15.52:4444/wd/hub'
+except KeyError as e:
+    hub = 'http://127.0.0.1:4444/wd/hub'
 
-if config['multiselectpage']:
+try:
     multiselectpage = config['multiselectpage']
-else:
+except KeyError as e:
     multiselectpage = 'http://controls.duser020.test/controls/multiselect'
 
-if config['testrail_post_api']:
+try:
     testrail_post_api = config['testrail_post_api']
-else:
+except KeyError as e:
     testrail_post_api = 'http://testrail.team.sagl/'
 
-if config['testrail_runid']:
+try:
     testrail_runid = config['testrail_runid']
-else:
+except KeyError as e:
     testrail_runid = '6'
 
 

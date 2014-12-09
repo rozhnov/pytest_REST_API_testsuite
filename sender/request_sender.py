@@ -27,6 +27,13 @@ class Sender:
         request = requests.post(self.url + method + self.token, data=json.dumps(params), verify=False)
         return request
 
+    def put(self, method, params=None):
+        fullurl = self.url + method + self.token
+        print('\nPUT ' + fullurl)
+        print('\nparams: ' + json.dumps(params))
+        request = requests.put(self.url + method + self.token, data=json.dumps(params), verify=False)
+        return request
+
     def post_testrail(self, testid, status, comment='ok'):
         client = testrail.APIClient(self.rail_api)
         client.user = 'autotest@team.sagl'

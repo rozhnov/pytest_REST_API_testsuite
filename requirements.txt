@@ -1,0 +1,11 @@
+PyMySQL==0.6.3
+colorama==0.3.2
+freeze==0.8.0
+jsonschema==2.4.0
+py==1.4.26
+pytest==2.6.4
+pytest-pythonpath==0.3
+requests==2.5.0
+selenium==2.44.0
+six==1.8.0
+pytest-xdist==1.11
