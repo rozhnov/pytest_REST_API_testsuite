@@ -49,7 +49,7 @@ except KeyError as e:
 try:
     hub = config['hub']
 except KeyError as e:
-    hub = 'http://127.0.0.1:4444/wd/hub'
+    hub = 'http://10.8.15.52:4444/wd/hub'
 
 try:
     multiselectpage = config['multiselectpage']
