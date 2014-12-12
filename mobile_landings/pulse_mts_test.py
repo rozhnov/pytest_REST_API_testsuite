@@ -1,13 +1,9 @@
 import pytest
 import requests
+from test_decoreators import log_test
 
 
-urls = [
-    'http://pulse.mts.ru/landing/?id=56e9fd7f-fb7a-4d6e-b3e0-4834cb06b293&channel=13222178&section=maxipulse&lid=N',
-    'http://pulse.mts.ru/landing/?id=56e9fd7f-fb7a-4d6e-b3e0-4834cb06b293&channel=13222178&section=maxipulse&lid=N'
-]
-
-
+@log_test
 @pytest.mark.parametrize("url", [
     'http://pulse.mts.ru/landing/?id=56e9fd7f-fb7a-4d6e-b3e0-4834cb06b293&channel=13222178&section=maxipulse&lid=N',
     'http://pulse.mts.ru/landing/?id=56e9fd7f-fb7a-4d6e-b3e0-4834cb06b293&channel=13222178&section=maxipulse&lid=1',
