@@ -45,11 +45,11 @@ def delete(table, where_column, where):
     connection.close()
 
 
-if __name__ == "__main__":
-    emails = select('emails', 'email', limit=' LIMIT 1 ', order='')
-    email = emails[0]['email']
-    print(email)
-    update('emails', 'email', email, 'used', '1')
+# if __name__ == "__main__":
+#     emails = select('emails', 'email', limit=' LIMIT 1 ', order='')
+#     email = emails[0]['email']
+#     print(email)
+#     update('emails', 'email', email, 'used', '1')
 
 
 

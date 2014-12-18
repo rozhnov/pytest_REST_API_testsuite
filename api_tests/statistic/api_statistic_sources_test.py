@@ -10,33 +10,37 @@ def setup_module():
     global jsondump
     global schema
     global curdir
-    pp = pprint.PrettyPrinter()
     print('\n----------------------------------------------------------------------\n')
     print('setup module ' + __name__)
+    pp = pprint.PrettyPrinter()
     sender = Sender()
-    request = sender.get("/api/rest/webmaster/json/analytics-geo/cityads.ru/3?")
+    request = sender.get("/api/rest/webmaster/json/statistics-sources/typesources/2014-06-15/2014-06-20?")
     jsondump = request.json()
     code = request.status_code
     curdir = os.path.dirname(__file__)
     schema = json.loads(open(curdir + "/schema.json", 'r').read())
 
+    print('Json schema for validation: ')
+    pp.pprint(schema)
+    print('response: ')
+    pp.pprint(jsondump)
 
-def test_analytics_geo_json_status():
+
+def test_statistic_sources_json_status():
     assert code, 200
 
 
-def test_analytics_geo_json_schema():
+def test_statistic_sources_error():
+    assert jsondump['error'] is ''
+
+
+def test_statistic_sources_json_schema():
     validate(jsondump, schema)
 
 
-def test_analytics_geo_json_status_500():
+def test_statistic_sources_json_status_500():
     status = jsondump['status']
     assert status != 500, "assert status in json  not 500"
-
-
-def teardown_module():
-    print('teardown module ' + __name__)
-    print('\n----------------------------------------------------------------------\n')
 
 
 

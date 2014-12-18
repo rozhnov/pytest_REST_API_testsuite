@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+	"status": {
+	  "type": "integer"
+	},
+	"error": {
+	  "type": "string"
+	},
+	"data": {
+	  "type": "array",
+	  "minItems": 2,
+	  "uniqueItems": true
+	},
+	"request_id": {
+	  "type": "integer"
+	}
+  },
+  "required": ["status", "error", "data", "request_id"]
+}

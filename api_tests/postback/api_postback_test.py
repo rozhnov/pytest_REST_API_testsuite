@@ -7,7 +7,6 @@ from sender.request_sender import Sender
 from collections import OrderedDict
 
 
-
 def setup_module():
     global code
     global jsondump

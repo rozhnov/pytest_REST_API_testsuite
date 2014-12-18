@@ -10,69 +10,49 @@ class FrontPage():
         self.driver = driver
         self.baseurl = config.baseUrl
 
-    def login(self):
-        self.loginlink.click()
-        self.name.send_keys("me0i@mail.ru")
-        self.pwd.send_keys("123698745")
-        self.submit.click()
-        return self.myname.text
-
-    def openmainpage(self):
-        self.driver.get(self.baseurl)
-
     @property
-    def username(self):
-        """
-
-        :rtype: WebElement
-        """
+    def __username(self):
         name = self.driver.find_element(By.XPATH, "//a[@class='with-hover-underline col-blacky']")
         return name
 
     @property
-    def loginlink(self):
-        """
-
-        :rtype: WebElement
-        """
+    def __loginlink(self):
         return self.driver.find_element(By.XPATH, '//a[@id="popup-login-link"]')
 
     @property
-    def loginpopup(self):
-        """
-
-        :rtype: WebElement
-        """
+    def __loginpopup(self):
         return self.driver.find_element(By.XPATH, "//div[contains(@class,'popup popup-logi')]")
 
     @property
-    def name(self):
-        """
-
-        :rtype: WebElement
-        """
+    def __name(self):
         return self.driver.find_element(By.XPATH, '//input[@name="nick"]')
 
     @property
-    def pwd(self):
-        """
-
-        :rtype: WebElement
-        """
+    def __pwd(self):
         return self.driver.find_element(By.XPATH, '//input[@name="passwd"]')
 
     @property
-    def submit(self):
-        """
-
-        :rtype: WebElement
-        """
+    def __submit(self):
         return self.driver.find_element(By.XPATH, '//span[@class="submit"]')
 
     @property
-    def myname(self):
-        """
-
-        :rtype: WebElement
-        """
+    def __myname(self):
         return self.driver.find_element(By.XPATH, "//a[@class='with-hover-underline col-blacky']")
+
+    @property
+    def __old(self):
+        return self.driver.find_element(By.XPATH, "//a[@id='account_type_switch_to_old']")
+
+    def login(self):
+        self.__loginlink.click()
+        self.__name.send_keys("me0i@mail.ru")
+        self.__pwd.send_keys("123698745")
+        self.__submit.click()
+        return self.__myname.text
+
+    def openmainpage(self):
+        self.driver.get(self.baseurl)
+
+    def switch_old_interface(self):
+        self.__old.click()
+

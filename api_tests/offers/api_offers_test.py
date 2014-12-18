@@ -16,14 +16,9 @@ def setup_module():
     sender = Sender()
     request = sender.get("/api/rest/webmaster/json/offers/web?limit=2&")
     jsondump = request.json()
-    #print('response: ')
-    #pp.pprint(jsondump)
     code = request.status_code
     curdir = os.path.dirname(__file__)
     schema = json.loads(open(curdir + "/schema.json", 'r').read())
-    #^.*\b(id)\b.*$ regexp for schema
-    #print('json schema loaded for validation: ')
-    #pp.pprint(schema)
 
 
 def test_offers_json_status():
