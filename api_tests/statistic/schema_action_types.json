@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+	"status": {
+	  "type": "integer"
+	},
+	"error": {
+	  "type": "string"
+	},
+	"data": {
+	  "type": "object",
+	  "properties": {
+		"total": {
+		  "type": "integer"
+		},
+		"items":{
+		  "type": "array",
+		  "minItems":0,
+		  "item":{
+			"type":"object",
+			"properties":{
+			  "eventTime":{
+				"type":"string"
+			  },
+			  "actionName":{
+				"type":"string"
+			  },
+			  "clickCount":{
+				"type":"string"
+			  },
+			  "clickUniqCount":{
+				"type":"string"
+			  },
+			  "commissionOpen":{
+				"type":"string"
+			  },
+			  "commissionCancelled":{
+				"type":"string"
+			  },
+			  "commissionApproved":{
+				"type":"string"
+			  },
+			  "crTotal":{
+				"type":"string"
+			  },
+			  "ctr":{
+				"type":"string"
+			  },
+			  "ecpc":{
+				"type":"string"
+			  },
+			  "ecpm":{
+				"type":"string"
+			  },
+			  "arLeads":{
+				"type":"string"
+			  },
+			  "crLeads":{
+				"type":"string"
+			  },
+			  "leadsOpen":{
+				"type":"string"
+			  },
+			  "leadsApproved":{
+				"type":"string"
+			  },
+			  "leadsCancelled":{
+				"type":"string"
+			  },
+			  "saleOpen":{
+				"type":"string"
+			  },
+			  "saleApproved":{
+				"type":"string"
+			  },
+			  "saleCancelled":{
+				"type":"string"
+			  },
+			  "backUrlRedirectCount":{
+				"type":"string"
+			  },
+			  "arSales":{
+				"type":"string"
+			  },
+			  "crSales":{
+				"type":"string"
+			  },
+			  "showCount":{
+				"type":"string"
+			  },
+			  "arTotal":{
+				"type":"string"
+			  }
+			},
+			"required":[
+			  "eventTime","actionID","actionName","clickCount","clickUniqCount","arCommission","commissionOpen","commissionCancelled","commissionApproved","crTotal",
+			  "ctr","ecpc","ecpm","arLeads","crLeads","leadsOpen","leadsApproved","leadsCancelled","saleOpen","saleApproved","saleCancelled","backUrlRedirectCount","arSales",
+			  "crSales","showCount","arTotal"
+			]
+		  }
+		}
+
+	  },
+	  "required":["total","items"]
+	},
+	"request_id": {
+	  "type": "integer"
+	}
+  },
+  "required": ["status", "error", "data", "request_id"]
+}
