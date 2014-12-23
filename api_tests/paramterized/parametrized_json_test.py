@@ -79,7 +79,7 @@ from sender.request_sender import Sender
     "/api/rest/webmaster/json/statistics-technologies/os_type/2014-06-15/2014-06-20?",
     "/api/rest/webmaster/json/statistics-devices/device_type_id/2014-06-15/2014-06-20?",
     "/api/rest/webmaster/json/statistics-technologies/os_type/2014-06-15/2014-06-20?"])
-def test_mobile_landings_response_status(url):
+def test_json_status(url):
     pp = pprint.PrettyPrinter()
     sender = Sender()
     request = sender.get(url)

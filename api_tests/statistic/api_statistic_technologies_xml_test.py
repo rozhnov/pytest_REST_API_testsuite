@@ -25,7 +25,7 @@ def test_statistic_technologies_xml_status():
 
 
 def test_statistic_technologies_xml_status():
-    status = xml.find('status')
+    status = int(xml.find('status').text)
     assert status != 500
     assert status is not ''
     assert status != 400

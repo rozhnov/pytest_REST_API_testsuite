@@ -25,7 +25,7 @@ def test_timezonelist_status():
 
 
 def test_timezonelist_status_xml():
-    status = xml.find('status')
+    status = int(xml.find('status').text)
     assert status != 500
     assert status is not ''
     assert status != 400
