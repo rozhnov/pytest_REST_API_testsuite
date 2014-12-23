@@ -36,14 +36,11 @@ def setup_module():
     curdir = os.path.dirname(__file__)
 
     #load schema for validation
-    schema = json.loads(open(curdir + "/schema.json", 'r').read())
+    schema = json.loads(open(curdir + "/postback_schema.json", 'r').read())
 
 
 def test_postback_json_status():
     assert code == 200
-
-
-
 
 
 def test_postback_json_status_400_or_500():
@@ -61,12 +58,6 @@ def test_postback_id():
     print(postback)
     validate(postback, schema)
 
-
-
-
-def teardown_module():
-    print('teardown module ' + __name__)
-    print('\n----------------------------------------------------------------------\n')
 
 
 
