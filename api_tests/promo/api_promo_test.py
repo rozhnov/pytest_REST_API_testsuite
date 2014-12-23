@@ -20,7 +20,7 @@ def setup_module():
 
 
 def test_promo_json_status():
-    assert code, 200
+    assert code == 200
 
 
 def test_promo_total_json():

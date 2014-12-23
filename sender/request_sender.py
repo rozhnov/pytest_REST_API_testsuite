@@ -1,4 +1,6 @@
 __author__ = 's.lugovskiy'
+
+import pprint
 import requests
 from setup import config
 from testrail import testrail
@@ -13,6 +15,7 @@ class Sender:
         self.key = config.key
         self.token = 'remote_auth=' + self.key
         self.testrail_run_id = config.testrail_runid
+        self.pp = pprint.PrettyPrinter()
 
     def get(self, method):
         fullurl = self.url + method + self.token
@@ -25,6 +28,20 @@ class Sender:
         print('\nPOST ' + fullurl)
         print('\nparams: ' + json.dumps(params))
         request = requests.post(self.url + method + self.token, data=json.dumps(params), verify=False)
+        return request
+
+    def post_xml(self, method, params=None):
+        fullurl = self.url + method + self.token
+        print('\nPOST ' + fullurl)
+        print('\nparams: ' + params)
+        request = requests.post(self.url + method + self.token, data=params, verify=False)
+        return request
+
+    def put_xml(self, method, params=None):
+        fullurl = self.url + method + self.token
+        print('\nPUT ' + fullurl)
+        print('\nparams: ' + params)
+        request = requests.put(self.url + method + self.token, data=params, verify=False)
         return request
 
     def put(self, method, params=None):

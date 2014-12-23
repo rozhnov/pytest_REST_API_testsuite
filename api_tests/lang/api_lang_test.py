@@ -33,9 +33,9 @@ def setup_module():
 
 
 def test_lang_json():
-    assert code, 200
+    assert code == 200
     status = jsondump['status']
-    assert status is not 500, 400
+    assert status != 500, 400
     profile = sender.get("/api/rest/webmaster/json/profile?").json()
     lang = profile['data']['language']
     assert lang == lang_set

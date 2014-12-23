@@ -40,7 +40,7 @@ def setup_module():
 
 
 def test_postback_json_status():
-    assert code, 200
+    assert code == 200
 
 
 

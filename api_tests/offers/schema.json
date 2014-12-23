@@ -15,7 +15,7 @@
 		  "patternProperties":{
 			"^(\\d+)" : {
 			  "type": "object",
-			  "required":["name","user_has_offer","cookie_ltv","shop_id","cpl","epc7days","epc90days","cpo7days","cpo30days"],
+			  "required":["name","user_has_offer","cookie_ltv","shop_id","cpl","epc7days","epc90days","cpo7days","cpo90days"],
 			  "properties":{
 				"name": {
 				  "type": "string"

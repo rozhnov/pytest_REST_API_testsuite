@@ -21,14 +21,14 @@ def setup_module():
 
 
 def test_promo_xml_status():
-    assert code, 200
+    assert code == 200
 
 
 def test_promo_xml_status():
     status = xml.find('status')
-    assert status is not 500
+    assert status != 500
     assert status is not ''
-    assert status is not 400
+    assert status != 400
 
 
 def test_promo_xml_data():

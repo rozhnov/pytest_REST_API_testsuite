@@ -27,7 +27,7 @@ def setup_module():
 
 
 def test_offers_platform_json_status():
-    assert code, 200
+    assert code == 200
 
 
 def test_offers_platform_json_schema():

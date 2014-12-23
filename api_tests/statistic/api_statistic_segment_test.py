@@ -27,7 +27,7 @@ def setup_module():
 
 
 def test_statistic_segment_json_status():
-    assert code, 200
+    assert code == 200
 
 
 def test_statistic_segment_error():

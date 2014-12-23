@@ -38,21 +38,21 @@ def setup_module():
     schema = json.loads(open(curdir + "/schema.json", 'r').read())
 
 
-def test_banners_json_status():
-    assert code, 200
+def test_rotators_json_status():
+    assert code == 200
 
 
-def test_banners_json_schema():
+def test_rotators_json_schema():
     validate(jsondump, schema)
 
 
-def test_banners_json_status_400_or_500():
+def test_rotators_json_status_400_or_500():
     status = jsondump['status']
     assert status != 500, "assert status in json  not 500"
     assert status != 400 , "assert status in json  not 400"
 
 
-def test_banners_id():
+def test_rotators_id():
     banner_id = jsondump['data']['id']
     assert banner_id is not None
     assert banner_id is not ''

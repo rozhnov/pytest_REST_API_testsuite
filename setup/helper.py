@@ -25,3 +25,24 @@ def set_window_size_divide_by_2(driver):
     print('\nbrowser window size changed: ')
     print(size)
     return size
+
+
+def get_recurse_key_values_json(values, data , key=''):
+    for item in data:
+        for k in item.keys():
+            if k == key:
+                values.append(item[k])
+            if isinstance(item[k], dict):
+                get_recurse_key_values_json(values, item[k], key)
+            if isinstance(item[k], list):
+                get_recurse_key_values_json(values, item[k], key)
+    return values
+
+
+def get_key_values_xml(data, key=''):
+    values = []
+    for item in data.iter(key):
+        values.append(item.text)
+    return values
+
+

@@ -1,6 +1,3 @@
-import json
-import os
-from jsonschema import validate
 from sender.request_sender import Sender
 
 
@@ -12,24 +9,25 @@ def setup_module():
     print('\n----------------------------------------------------------------------\n')
     print('setup module ' + __name__)
     sender = Sender()
-    request = sender.get("/api/rest/webmaster/json/goods-brands-list/marketplace?")
+    request = sender.get("/api/rest/webmaster/json/timezonelist?")
     jsondump = request.json()
     code = request.status_code
-    curdir = os.path.dirname(__file__)
-    schema = json.loads(open(curdir + "/schema.json", 'r').read())
 
 
-def test_goods_brands_json_status():
-    assert code, 200
+def test_timezonelist_json_status():
+    assert code == 200
 
 
-def test_goods_brands_json_status_500():
+def test_timezonelist_json():
+    items = jsondump['data']['items']
+    assert len(items) > 200
+    # assert any(item['name'] == 'Europe/Moscow' for item in items) is True
+
+
+def test_timezonelist_json_status_500():
     status = jsondump['status']
     assert status != 500, "assert status in json  not 500"
 
-
-def test_goods_brands_json_schema():
-    validate(jsondump, schema)
 
 
 
