@@ -50,7 +50,8 @@ def test_lang_json_status_400_or_500():
 def teardown_module():
     print('teardown module ' + __name__)
     print('\n----------------------------------------------------------------------\n')
-
+    params = {"lang": "ru"}
+    request = sender.put("/api/rest/webmaster/json/user-language/?", params)
 
 
 

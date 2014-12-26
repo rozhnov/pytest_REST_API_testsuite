@@ -14,7 +14,7 @@ def setup_module():
     print('setup module ' + __name__)
     pp = pprint.PrettyPrinter()
     sender = Sender()
-    request = sender.get("/api/rest/webmaster/json/orderstatistics/2014-06-15/2014-06-20?")
+    request = sender.get("/api/rest/webmaster/json/orderstatistics/2014-12-01/2014-12-20?")
     jsondump = request.json()
     code = request.status_code
     curdir = os.path.dirname(__file__)

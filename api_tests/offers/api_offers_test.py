@@ -14,7 +14,7 @@ def setup_module():
     print('\n----------------------------------------------------------------------\n')
     print('setup module ' + __name__)
     sender = Sender()
-    request = sender.get("/api/rest/webmaster/json/offers/web?limit=2&")
+    request = sender.get("/api/rest/webmaster/json/offers/web?")
     jsondump = request.json()
     code = request.status_code
     curdir = os.path.dirname(__file__)
@@ -44,6 +44,11 @@ def test_offers_geo():
             assert ccode is not None
             assert ccode is not 'null'
             assert len(ccode) > 0
+
+
+def test_cpo_90_days():
+    items = jsondump['data']['items']
+    assert any(jsondump['data']['items'][key]['cpo90days'] > 0 for key, value in items.items()) is True
 
 
 def teardown_module():

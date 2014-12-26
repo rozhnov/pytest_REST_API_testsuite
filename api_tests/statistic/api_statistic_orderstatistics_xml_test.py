@@ -13,7 +13,7 @@ def setup_module():
     print('----------------------------------------------------------------------')
     print('setup module ' + __name__)
     sender = Sender()
-    request = sender.get("/api/rest/webmaster/xml/orderstatistics/2014-06-15/2014-06-20?")
+    request = sender.get("/api/rest/webmaster/xml/orderstatistics/2014-12-01/2014-12-20?")
     raw_xml = request.text
     pp.pprint(raw_xml)
     code = request.status_code

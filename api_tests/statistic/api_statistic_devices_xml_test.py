@@ -13,7 +13,7 @@ def setup_module():
     print('----------------------------------------------------------------------')
     print('setup module ' + __name__)
     sender = Sender()
-    request = sender.get("/api/rest/webmaster/xml/statistics-devices/device_type_id/2014-06-15/2014-06-20?")
+    request = sender.get("/api/rest/webmaster/xml/statistics-devices/device_type_id/2014-12-01/2014-12-20?")
     raw_xml = request.text
     pp.pprint(raw_xml)
     code = request.status_code
@@ -43,16 +43,16 @@ def test_statistic_devices_xml_data():
             assert len(str(item.find('eventTime').text)) > 0
             assert int(item.find('clickCount').text) >= 0
             assert int(item.find('clickUniqCount').text) >= 0
-            assert int(item.find('commissionOpen').text) >= 0
-            assert int(item.find('commissionApproved').text) >= 0
-            assert int(item.find('commissionCancelled').text) >= 0
-            assert int(item.find('commissionApproved').text) >= 0
-            assert int(item.find('crTotal').text) >= 0
-            assert int(item.find('ctr').text) >= 0
-            assert int(item.find('ecpc').text) >= 0
-            assert int(item.find('ecpm').text) >= 0
+            assert float(item.find('commissionOpen').text) >= 0
+            assert float(item.find('commissionApproved').text) >= 0
+            assert float(item.find('commissionCancelled').text) >= 0
+            assert float(item.find('commissionApproved').text) >= 0
+            assert float(item.find('crTotal').text) >= 0
+            assert float(item.find('ctr').text) >= 0
+            assert float(item.find('ecpc').text) >= 0
+            assert float(item.find('ecpm').text) >= 0
             assert int(item.find('arLeads').text) >= 0
-            assert int(item.find('crLeads').text) >= 0
+            assert float(item.find('crLeads').text) >= 0
             assert int(item.find('leadsOpen').text) >= 0
             assert int(item.find('leadsApproved').text) >= 0
             assert int(item.find('leadsCancelled').text) >= 0
