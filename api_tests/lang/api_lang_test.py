@@ -1,6 +1,7 @@
 import json
 import os
 import pprint
+import time
 import random
 from jsonschema import validate
 from sender.request_sender import Sender
@@ -36,6 +37,7 @@ def test_lang_json():
     assert code == 200
     status = jsondump['status']
     assert status != 500, 400
+    time.sleep(15)
     profile = sender.get("/api/rest/webmaster/json/profile?").json()
     lang = profile['data']['language']
     assert lang == lang_set

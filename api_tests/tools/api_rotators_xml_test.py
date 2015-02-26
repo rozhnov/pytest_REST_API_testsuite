@@ -2,7 +2,7 @@ import random
 from sender.request_sender import Sender
 from xml.etree import ElementTree as et
 import pprint
-
+import time
 
 def setup_module():
     global code
@@ -63,6 +63,7 @@ def test_rotator_xml_data():
     rotator_id = int(xml.find('.//data/id').text)
     assert rotator_id > 0
     assert error is None
+    time.sleep(15)
 
     # get created rotator
     sender = Sender()
@@ -112,6 +113,7 @@ def test_rotator_xml_data():
 
     assert response_put.status_code != '500'
     assert et.fromstring(response_put.text).find('.//status') != '500'
+    time.sleep(15)
 
     #get changed rotator
     response = sender.get('/api/rest/webmaster/xml/rotator/' + str(rotator_id) + '?')

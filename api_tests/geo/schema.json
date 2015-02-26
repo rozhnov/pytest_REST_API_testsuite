@@ -30,7 +30,7 @@
 		  },
 		  "items":{
 			"type": "array",
-			"minItems": 8,
+			"minItems": 7,
 			"uniqueItems": true
 		  }
 		},

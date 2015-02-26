@@ -4,6 +4,7 @@ import pprint
 import random
 from jsonschema import validate
 from sender.request_sender import Sender
+import time
 
 
 def setup_module():
@@ -56,6 +57,7 @@ def test_rotators_id():
     banner_id = jsondump['data']['id']
     assert banner_id is not None
     assert banner_id is not ''
+    time.sleep(15)
     rotator = sender.get('/api/rest/webmaster/json/rotator/' + str(banner_id) + '?').json()
     assert rotator['status'] is not 500
     assert rotator['data']['name'] == rotator_name

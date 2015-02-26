@@ -3,10 +3,10 @@ import time
 import os
 
 
-def screenshot(function, driver):
+def screenshot(function, driver, name=''):
     path = os.path.dirname(os.path.realpath(__file__)) + '/screenshots/'
-    date = time.strftime("%Y-%m-%d-%H-%M")
-    filename = path + function.__name__ + '_' + str(date) + '.png'
+    date = time.strftime("%Y-%m-%d-%H-%M-%S")
+    filename = path + function.__name__ + '_' + str(date) + '_' + str(name) + '_' + '.png'
     png = driver.get_screenshot_as_png()
     f = open(filename, 'wb+')
     f.write(png)

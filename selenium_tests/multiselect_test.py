@@ -20,7 +20,7 @@ def setup_module():
                 desired_capabilities=DesiredCapabilities.FIREFOX)
         driver.maximize_window()
         page = multiselect_page.MultiselectPage(driver)
-        page.openmainpage()
+        page.openpage()
 
         conf = {
                 'driver: ': str(driver.capabilities),
@@ -35,51 +35,48 @@ def setup_function(function):
 
 def test_multiselect():
         page.click_first_multi()
-        test_id = '260'
-
-        try:
-                assert True == page.multi_popup.is_displayed()
-                sender.post_testrail(test_id, 1, conf)
-        except AssertionError as e:
-                sender.post_testrail(test_id, 5, e)
-                raise AssertionError(e)
+        assert True == page.multi_popup.is_displayed()
 
 
 def test_multiselect_input_default_text():
-        test_id = '248'
-        text = page.multi_input.text
-        try:
-                assert text , 'Выберите из списка'
-                conf['comment'] = 'Text in input: ' + text
-                sender.post_testrail(test_id, 1, conf)
-        except AssertionError as e:
-                sender.post_testrail(test_id, 5, e)
-                raise AssertionError(e)
+        text = page.multi_input_0.text
+        assert text , 'Выберите из списка'
 
 
 def test_multiselect2_delete_element():
-        test_id = '256'
-        try:
-                page.click_second_multi()
-                page.multi_popup2delete.click()
-                text = page.multi_popup2area.text
-                assert text is ''
-                conf['comment'] = 'multiselect area text: ' + text
-                sender.post_testrail(test_id, 1, conf)
-        except Exception as e:
-                sender.post_testrail(test_id, 5, e)
-                raise Exception(e)
+        page.click_second_multi()
+        page.multi_popup2delete.click()
+        text = page.multi_popup2area.text
+        assert text is ''
 
 
 def test_multiselect_window_resize():
-        test_id = '243'
-        try:
-                size = helper.set_window_size_divide_by_2(driver)
-                assert True == page.multi_open.is_displayed()
-                conf['comment'] = 'New window size: ' + str(size)
-                sender.post_testrail(test_id, 1, conf)
-        except Exception as e:
-                sender.post_testrail(test_id, 5, e)
+        helper.set_window_size_divide_by_2(driver)
+        assert True == page.multi_open.is_displayed()
+
+
+def test_multiselect3_multiple_select():
+        page.click_third_multi()
+        assert True == page.multiple_popup.is_displayed()
+        #добавляем первый оффер
+        page.multiple_input.click()
+        assert True == page.multiple_options.is_displayed()
+        items = page.multiple_items
+        offer1 = items[0].text
+        items[0].click()
+        assert False == page.multiple_options.is_displayed()
+        assert True == (offer1 in page.multiple_area.text)
+        #добавляем второй оффер
+        page.multiple_input.click()
+        assert True == page.multiple_options.is_displayed()
+        assert True == page.multiple_options.is_displayed()
+        items = page.multiple_items
+        offer2 = items[0].text
+        items[0].click()
+        assert False == page.multiple_options.is_displayed()
+        #проверяем наличие обоих выбранных офферов в мультиселекте
+        assert True == (offer2 in page.multiple_area.text), "выбранный оффер отсутствует в мультиселекте: %r" % offer2
+        assert True == (offer1 in page.multiple_area.text), "выбранный оффер отсутствует в мультиселекте: %r" % offer1
 
 
 def teardown_function(function):

@@ -1,6 +1,7 @@
 import pprint
 import pytest
 from sender.request_sender import Sender
+import time
 
 
 @pytest.mark.parametrize("url", [
@@ -28,7 +29,6 @@ from sender.request_sender import Sender
     "/api/rest/webmaster/json/offers/mobile_favourite/1/5/epc7days/desc?",
     "/api/rest/webmaster/json/exchangeratelist?",
     "/api/rest/webmaster/json/profile?",
-    "/api/rest/webmaster/json/promolist?",
     "/api/rest/webmaster/json/timezonelist?",
     "/api/rest/webmaster/json/geo-list/web?",
     "/api/rest/webmaster/json/geo-list/mobile?",
@@ -80,6 +80,7 @@ from sender.request_sender import Sender
     "/api/rest/webmaster/json/statistics-devices/device_type_id/2014-12-01/2014-12-20?",
     "/api/rest/webmaster/json/statistics-technologies/os_type/2014-12-01/2014-12-20?"])
 def test_json_status(url):
+    time.sleep(2)
     pp = pprint.PrettyPrinter()
     sender = Sender()
     request = sender.get(url)
@@ -91,6 +92,7 @@ def test_json_status(url):
     assert status != 500
     assert code != 500
     assert (code == 200 or code == 204)
+
 
 
 

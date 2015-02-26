@@ -36,29 +36,26 @@ def setup_module():
     code = request.status_code
     curdir = os.path.dirname(__file__)
 
-    #load schema for validation
-    schema = json.loads(open(curdir + "/postback_schema.json", 'r').read())
 
-
-def test_postback_json_status():
+def test_postback_list_json_status():
     assert code == 200
 
 
-def test_postback_json_status_400_or_500():
+def test_postback_list_json_status_400_or_500():
     status = jsondump['status']
     assert status != 500, "assert status in json  not 500"
     assert status != 400, "assert status in json  not 400"
 
 
-def test_postback_id():
-    id = jsondump['data']['id']
+def test_postback_list():
+    postback_id = jsondump['data']['id']
+    time.sleep(15)
     assert id is not None
     assert id is not ''
-    print(id)
-    time.sleep(15)
-    postback = sender.get("/api/rest/webmaster/json/postback/"+str(id)+"?").json()
-    print(postback)
-    validate(postback, schema)
+    postback = sender.get("/api/rest/webmaster/json/postback-list/?limit=999999&").json()
+    assert any(str(postback_id) in item['id'] for item in postback['data']) is True
+
+
 
 
 

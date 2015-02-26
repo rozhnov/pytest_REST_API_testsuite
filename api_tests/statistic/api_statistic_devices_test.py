@@ -34,7 +34,8 @@ def test_statistic_devices_error():
 
 
 def test_statistic_devices_json_schema():
-    validate(jsondump, schema)
+    if jsondump['status'] == 200:
+        validate(jsondump, schema)
 
 
 def test_statistic_devices_json_status_500():

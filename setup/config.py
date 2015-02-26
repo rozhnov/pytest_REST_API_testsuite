@@ -10,7 +10,7 @@ wm = 'me0i@mail.ru'
 wmPw = '123698745'
 key = '859da89ead6c6ae40bb4d8e51bae4771'
 hub = 'http://10.8.15.52:4444/wd/hub'
-multiselectpage = 'http://controls.duser020.test/controls/multiselect'
+multiselectpage = 'http://controls.team.sagl/multiselect'
 testrail_post_api = 'http://testrail.team.sagl/'
 testrail_runid = 6
 
@@ -54,7 +54,7 @@ except KeyError as e:
 try:
     multiselectpage = config['multiselectpage']
 except KeyError as e:
-    multiselectpage = 'http://controls.duser020.test/controls/multiselect'
+    multiselectpage = 'http://control.team.sagl/multiselect'
 
 try:
     testrail_post_api = config['testrail_post_api']

@@ -1,6 +1,7 @@
 from sender.request_sender import Sender
 from xml.etree import ElementTree as et
 import pprint
+import time
 
 
 def setup_module():

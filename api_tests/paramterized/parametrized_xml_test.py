@@ -1,7 +1,9 @@
 import pprint
 import pytest
+import time
 from sender.request_sender import Sender
 from xml.etree import ElementTree as et
+
 
 @pytest.mark.parametrize("url", [
     "/api/rest/webmaster/xml/offers/web/1/5?",
@@ -28,7 +30,6 @@ from xml.etree import ElementTree as et
     "/api/rest/webmaster/xml/offers/mobile_favourite/1/5/epc7days/desc?",
     "/api/rest/webmaster/xml/exchangeratelist?",
     "/api/rest/webmaster/xml/profile?",
-    "/api/rest/webmaster/xml/promolist?",
     "/api/rest/webmaster/xml/timezonelist?",
     "/api/rest/webmaster/xml/geo-list/web?",
     "/api/rest/webmaster/xml/geo-list/mobile?",
@@ -80,6 +81,7 @@ from xml.etree import ElementTree as et
     "/api/rest/webmaster/xml/statistics-devices/device_type_id/2014-12-01/2014-12-20?",
     "/api/rest/webmaster/xml/statistics-technologies/os_type/2014-12-01/2014-12-20?"])
 def test_xml_status(url):
+    time.sleep(2)
     pp = pprint.PrettyPrinter()
     sender = Sender()
     request = sender.get(url)
