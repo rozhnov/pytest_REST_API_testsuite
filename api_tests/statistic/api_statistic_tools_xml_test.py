@@ -40,7 +40,6 @@ def test_statistic_tools_xml_data():
         items = xml.find('.//data/items')
         assert len(items) > 0
         for item in items:
-            assert len(str(item.find('eventTime').text)) > 0
             assert int(item.find('clickCount').text) >= 0
             assert int(item.find('clickUniqCount').text) >= 0
             assert float(item.find('commissionOpen').text) >= 0
@@ -60,10 +59,10 @@ def test_statistic_tools_xml_data():
             assert int(item.find('saleApproved').text) >= 0
             assert int(item.find('saleCancelled').text) >= 0
             assert int(item.find('backUrlRedirectCount').text) >= 0
-            assert int(item.find('arSales').text) >= 0
-            assert int(item.find('crSales').text) >= 0
+            assert len(item.find('arSales').text) >= 0
+            assert len(item.find('crSales').text) >= 0
             assert int(item.find('showCount').text) >= 0
-            assert int(item.find('arTotal').text) >= 0
+            assert len(item.find('arTotal').text) >= 0
 
 
 

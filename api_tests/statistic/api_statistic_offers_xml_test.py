@@ -40,7 +40,6 @@ def test_statistic_offers_xml_data():
         items = xml.find('.//data/items')
         assert len(items) > 0
         for item in items:
-            assert len(str(item.find('eventTime').text)) > 0
             assert len(str(item.find('actionID').text)) > 0
             assert len(str(item.find('actionName').text)) > 0
             assert int(item.find('clickCount').text) >= 0

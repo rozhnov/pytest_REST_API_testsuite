@@ -93,7 +93,7 @@
 			  }
 			},
 			"required":[
-			  "eventTime","actionID","actionName","clickCount","clickUniqCount","arCommission","commissionOpen","commissionCancelled","commissionApproved","crTotal",
+			  "actionID","actionName","clickCount","clickUniqCount","arCommission","commissionOpen","commissionCancelled","commissionApproved","crTotal",
 			  "ctr","ecpc","ecpm","arLeads","crLeads","leadsOpen","leadsApproved","leadsCancelled","saleOpen","saleApproved","saleCancelled","backUrlRedirectCount","arSales",
 			  "crSales","showCount","arTotal"
 			]

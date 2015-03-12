@@ -30,6 +30,13 @@ class Sender:
         request = requests.post(self.url + method + self.token, data=json.dumps(params), verify=False)
         return request
 
+    def post_without_token(self, method, params=None):
+        fullurl = self.url + method
+        print('\nPOST ' + fullurl)
+        print('\nparams: ' + json.dumps(params))
+        request = requests.post(self.url + method + self.token, data=json.dumps(params), verify=False)
+        return request
+
     def post_xml(self, method, params=None):
         fullurl = self.url + method + self.token
         print('\nPOST ' + fullurl)
