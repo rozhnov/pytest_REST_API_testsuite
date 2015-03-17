@@ -14,6 +14,7 @@ def setup_module():
         command_executor=hub,
         desired_capabilities=DesiredCapabilities.CHROME)
     user = config.wm
+    driver.get("http://192.168.55.55/")
 
 
 def teardown_function(function):
@@ -24,10 +25,15 @@ def teardown_module():
     driver.quit()
 
 
-def test_laravel():
-    driver.get("http://192.168.55.55/")
+def test_laravel_title():
     text = driver.find_element_by_xpath("//div[@class='title']").text
     assert text == 'Laravel 5'
+
+
+def test_laravel_quote():
+    text = driver.find_element_by_xpath("//div[@class='quote']").text
+    size = len(text)
+    assert size > 0
 
 
 
